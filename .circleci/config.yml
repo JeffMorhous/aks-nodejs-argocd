@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Allow archive
           command: |
-            echo "deb http://archive.debian.org/debian/ stretch main" | $SUDO tee /etc/apt/sources.list
-            echo "deb http://archive.debian.org/debian-security/ stretch/updates main" | $SUDO tee -a /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian/ stretch main" | sudo tee /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian-security/ stretch/updates main" | sudo tee -a /etc/apt/sources.list
 
   argocd-configure:
     executor: azure-aks/default
