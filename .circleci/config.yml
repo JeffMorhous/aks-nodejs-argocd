@@ -7,14 +7,13 @@ orbs:
 
 jobs:
   install-azure-cli:
+    executor: azure-aks/default
     description: |
       Install the Azure CLI, if not available
     steps:
       - run:
           name: Install Azure CLI, if not available
-          command: >
-            curl -sL https://aka.ms/InstallAzureCLIDeb | $SUDO bash
-            echo "Azure CLI is now installed."
+          command: curl -sL https://aka.ms/InstallAzureCLIDeb | $SUDO bash
 
   argocd-configure:
     executor: azure-aks/default
