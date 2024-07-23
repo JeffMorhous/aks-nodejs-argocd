@@ -27,6 +27,7 @@ jobs:
           Resource group that the cluster is in
         type: string
     steps:
+      - run: echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
       - checkout
       - run:
           name: Pull Updated code from repo
