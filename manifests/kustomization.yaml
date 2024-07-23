@@ -8,4 +8,4 @@ namespace: nodejs
 images:
 - name: aks-nodejs-argocd
   newName: morhousjeff/aks-nodejs-argocd
-  newTag: 234f0b4a7dc19e664701ebdeb98f3f80a35224f9
+  newTag: 32a5ddc8f644c2b23c153749a140fb0e2be428f8
