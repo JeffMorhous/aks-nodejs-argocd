@@ -6,14 +6,14 @@ orbs:
   kubernetes: circleci/kubernetes@1.3.0
 
 jobs:
-  install-azure-cli:
+  login:
     executor: azure-aks/default
-    description: |
-      Install the Azure CLI, if not available
     steps:
       - run:
-          name: Install Azure CLI, if not available
-          command: curl -sL https://aka.ms/InstallAzureCLIDeb | $SUDO bash
+          name: Allow archive
+          command: |
+            echo "deb http://archive.debian.org/debian/ stretch main" | $SUDO tee /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian-security/ stretch/updates main" | $SUDO tee -a /etc/apt/sources.list
 
   argocd-configure:
     executor: azure-aks/default
@@ -73,7 +73,7 @@ jobs:
 workflows:
   Deploy-App-on-AKS:
     jobs:
-      - install-azure-cli:
+      - login
       - docker/publish:
           image: $DOCKER_LOGIN/$APP_NAME
           tag: $CIRCLE_SHA1,latest
